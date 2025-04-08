@@ -1,0 +1,8 @@
+# bundle
+/dist
+
+# dependencies
+/node_modules
+
+# misc
+.DS_Store
