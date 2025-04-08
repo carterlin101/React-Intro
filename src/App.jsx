@@ -26,7 +26,7 @@ export const App = () => {
                     ]}
                     wrapper="span"
                     speed={50}
-                    className="text-3xl md:text-5xl text-white"
+                    className="text-3xl md:text-5xl text-white text-center"
                     repeat={Infinity}
                 />
             </main>
