@@ -24,7 +24,7 @@ const Home = () => {
             </div>
             <div>
                 <Link to="/threejs" className="pr-7 hover:text-gray-500">ThreeJS</Link>
-                <a className="pr-7 hover:text-gray-500" href={`${process.env.FS_LINK}/src/logo.svg`}>
+                <a className="pr-7 hover:text-gray-500" href={`${process.env.FS_LINK}`}>
                     Our Website
                 </a>
             </div>
