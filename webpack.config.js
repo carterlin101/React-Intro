@@ -1,6 +1,15 @@
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(env[next]);
+    return prev;
+}, {});
 
 module.exports = {
   entry: './src/index.js', // Entry point for your app
@@ -43,6 +52,7 @@ module.exports = {
     hot: true, // Enable Hot Module Replacement (HMR)
   },
   plugins: [
+    new webpack.DefinePlugin(envKeys),
     new HtmlWebpackPlugin({
       template: './public/index.html', // Template for the HTML file
       inject: true
