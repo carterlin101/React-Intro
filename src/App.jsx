@@ -5,7 +5,9 @@ import { TypeAnimation } from 'react-type-animation';
 export const App = () => {
     return (
         <>
-            <h1>Hello World</h1>
+        <h1 className="text-white text-5xl">Hello World</h1>
+        <Card title="Hello" content="This is space for Hello"/>
+        <Card title="Bye" content="This is space for Bye"/>
         </>
         // <Router>
 
@@ -13,6 +15,16 @@ export const App = () => {
         //         <Route path="/" element={<Home />} />
         //     </Routes>
         // </Router>
+    );
+}
+
+
+const Card = ({ title, content}) => {
+    return(
+        <div className="w-50 bg-white">
+            <h1>{title}</h1>
+            <p>{content}</p>
+        </div>
     );
 }
 
