@@ -4,12 +4,15 @@ import { TypeAnimation } from 'react-type-animation';
 
 export const App = () => {
     return (
-        <Router>
+        <>
+            <h1>Hello World</h1>
+        </>
+        // <Router>
 
-            <Routes>
-                <Route path="/" element={<Home />} />
-            </Routes>
-        </Router>
+        //     <Routes>
+        //         <Route path="/" element={<Home />} />
+        //     </Routes>
+        // </Router>
     );
 }
 
