@@ -6,8 +6,8 @@ export const App = () => {
     return (
         <>
         <h1 className="text-white text-5xl">Hello World</h1>
-        <Card title="Hello" content="This is space for Hello"/>
-        <Card title="Bye" content="This is space for Bye"/>
+        <Card name="Hello" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUfUO3pBjHc4KSbs3aTVlnzarw4ubqbps94A-aOaJhcTqEeqU0zjwzi1bFh3w8ueXoY0IxzOcz9qDcfu_lbz87k6_pa5uqZ8lTtwCsfFOc" cost="12" description="cheese bread"/>
+        {/* <Card name="Bye" image=""/> */}
         </>
         // <Router>
 
@@ -19,14 +19,15 @@ export const App = () => {
 }
 
 
-const Card = ({ title, content}) => {
+const Card = ({ name, image, cost, description }) => {
     return(
-        <div className="w-50 bg-white">
-            <h1>{title}</h1>
-            <p>{content}</p>
-        </div>
+        <h1>{name}</h1>
+        <img src="{image}" />
+        <div>{cost}</div>
+        <div>{description}</div>
     );
 }
+
 
 const Home = () => {
     return (
