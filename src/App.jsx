@@ -4,11 +4,15 @@ import { TypeAnimation } from 'react-type-animation';
 
 export const App = () => {
     return (
-        <>
-        <h1 className="text-white text-5xl">Hello World</h1>
-        <Card name="Hello" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUfUO3pBjHc4KSbs3aTVlnzarw4ubqbps94A-aOaJhcTqEeqU0zjwzi1bFh3w8ueXoY0IxzOcz9qDcfu_lbz87k6_pa5uqZ8lTtwCsfFOc" cost="12" description="cheese bread"/>
-        {/* <Card name="Bye" image=""/> */}
-        </>
+            
+        <div class="flex justify-between h-screen w-screen">
+            <p className="text-center  text-5xl">Buffet</p>
+            <Card name="Pizza" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUfUO3pBjHc4KSbs3aTVlnzarw4ubqbps94A-aOaJhcTqEeqU0zjwzi1bFh3w8ueXoY0IxzOcz9qDcfu_lbz87k6_pa5uqZ8lTtwCsfFOc" cost="$11.99" description="Sauce on bread with cheese"/>
+            <Card name="Chicken wing" image="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSxrkX3cJulVJnGzbKV6CwCEVB0KcOhoEt2CORfV9WZm76YQJGG1Hjn_hBbNTKl-tBBSSuHwXo" cost="$7.99" description="A Chicken wing"/>
+            <Card name="Kool Aid" image="https://tinyurl.com/42a2p4ku" cost="Free.99" description="Kool-Aid is a popular powdered beverage mix brand owned by Kraft Heinz. It comes in various flavors and is typically mixed with water and sugar to make a sweet, refreshing drink. Kool-Aid also has a liquid version, offering a ready-to-drink option. However, overdose on Kool-aid may lead to death"/>
+            
+        </div>
+
         // <Router>
 
         //     <Routes>
@@ -20,11 +24,14 @@ export const App = () => {
 
 
 const Card = ({ name, image, cost, description }) => {
-    return(
-        <h1>{name}</h1>
-        <img src="{image}" />
-        <div>{cost}</div>
-        <div>{description}</div>
+    return( 
+        
+        <div class="">
+            <h1>{name}</h1>
+            <img class="size-100"src={image} />
+            <div>{cost}</div>
+            <div>{description}</div>
+        </div>
     );
 }
 
