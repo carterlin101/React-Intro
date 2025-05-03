@@ -1,17 +1,32 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { TypeAnimation } from 'react-type-animation';
+import { TypeAnimation } from 'react-type-animation'; 
+import { useState } from 'react';
+
+
 
 export const App = () => {
+    const [counter, setCounter] = useState(0);
+    const [dark, setDark] = useState(false);
+
+    const darkModeHandler = () => {  
+        setDark(!dark);
+        document.body.classList.toggle('dark');
+    };
+
     return (
-        
-    
-        <div className="grid grid-cols-3">
-        <h1 className="text-center text-5xl text-blue-300">Buffet</h1>
-        <Card name="Pizza" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUfUO3pBjHc4KSbs3aTVlnzarw4ubqbps94A-aOaJhcTqEeqU0zjwzi1bFh3w8ueXoY0IxzOcz9qDcfu_lbz87k6_pa5uqZ8lTtwCsfFOc" cost="$11.99" description="Sauce on bread with cheese"/>
-        <Card name="Chicken wing" image="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSxrkX3cJulVJnGzbKV6CwCEVB0KcOhoEt2CORfV9WZm76YQJGG1Hjn_hBbNTKl-tBBSSuHwXo" cost="$7.99" description="A Chicken wing"/>
-        <Card name="Kool Aid" image="https://tinyurl.com/42a2p4ku" cost="Free.99" description="Kool-Aid is a popular powdered beverage mix brand owned by Kraft Heinz. It comes in various flavors and is typically mixed with water and sugar to make a sweet, refreshing drink. Kool-Aid also has a liquid version, offering a ready-to-drink option. However, overdose on Kool-aid may lead to death"/>
+        <div className='flex justify-center items-center'>
+            <span className="text-3xl">{counter}</span>
+            <button 
+                className='p-5 bg-white dark:bg-black dark:text-white rounded-xl'
+                onClick={() => setCounter(counter + 1)}
+            >Count the pixels</button>
+            <button 
+                className='p-5 bg-white dark:bg-black dark:text-white rounded-xl'
+                onClick={() => darkModeHandler(dark)}>Change Mode</button>
         </div>
+    
+       
 
         // <Router>
 
@@ -22,6 +37,17 @@ export const App = () => {
     );
 }
 
+
+const CardGrid = () => {
+    return (
+        <div className="grid grid-cols-3">
+        <h1 className="text-center absolute text-5xl text-blue-300">Buffet</h1>
+        <Card name="Pizza" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUfUO3pBjHc4KSbs3aTVlnzarw4ubqbps94A-aOaJhcTqEeqU0zjwzi1bFh3w8ueXoY0IxzOcz9qDcfu_lbz87k6_pa5uqZ8lTtwCsfFOc" cost="$11.99" description="Sauce on bread with cheese"/>
+        <Card name="Chicken wing" image="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSxrkX3cJulVJnGzbKV6CwCEVB0KcOhoEt2CORfV9WZm76YQJGG1Hjn_hBbNTKl-tBBSSuHwXo" cost="$7.99" description="A Chicken wing"/>
+        <Card name="Kool Aid" image="https://tinyurl.com/ymn2bk4w" cost="Free.99" description="Kool-Aid is a popular powdered beverage mix brand owned by Kraft Heinz. It comes in various flavors and is typically mixed with water and sugar to make a sweet, refreshing drink. Kool-Aid also has a liquid version, offering a ready-to-drink option. However, overdose on Kool-aid may lead to death"/>
+        </div>
+    );
+}
 
 const Card = ({ name, image, cost, description }) => {
     return( 
