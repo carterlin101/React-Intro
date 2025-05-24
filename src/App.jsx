@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { TypeAnimation } from 'react-type-animation'; 
 import { useState } from 'react';
-
+import { useWindowSize } from 'react-use'
+import Confetti from 'react-confetti'
 
 
 export const App = () => {
@@ -20,13 +21,35 @@ const Hangman = () => {
         return dictionary[rIdx];
     }
 
+    const getGuessUnderScores = (word) => {
+        return Array(word.length).fill("_")
+    }
+
+
     const rWord = getRandomWord();
 
-    const [Guess, setGuess] = useState(Array(rWord.length).fill("_"));
+    const [Guess, setGuess] = useState(getGuessUnderScores(rWord));
     const [chosenWord ,setChosenWord] = useState(rWord);
     const [tries, setTries] = useState(lives);       
     const [input, setInput] = useState("");
 
+    const didWin = () => {
+        return !Guess.includes("_");
+    }
+
+    const isGameOngoing = () => {
+        return (tries > 0 && !didWin());
+    }
+
+
+
+        const retry = () => {
+            const newRWord = getRandomWord();
+            setChosenWord(newRWord);
+            setGuess(getGuessUnderScores(newRWord));
+            setTries(lives);
+            setInput('');
+        }
 
 
     const handleSubmit = () => {
@@ -52,11 +75,14 @@ const Hangman = () => {
         setInput(value.length > 0? value[value.length -1] : "")
     }
 
+    const gameOngoing = isGameOngoing();
 
-
+    const { width, height } = useWindowSize()
 
     return (
         <div className='flex flex-col justify-center items-center h-100'>
+            {didWin() && <Confetti width={width} height={height} />}
+            
             <span className='text-3xl text-white'>Tries: {tries}</span>
             <span className='text-5xl text-white'>{Guess.join(" ")}</span>
             <input
@@ -64,8 +90,8 @@ const Hangman = () => {
             onChange={handleInputChange}
              className="border-2 text-white border-white rounded-md p-2 mt-5" placeholder="Type Answer Here"type='text'></input>
             <button 
-            onClick={() => handleSubmit()}
-             className='bg-white text-black   rounded-md  px-4 py-2 mt-5'>Submit</button>
+            onClick={() => gameOngoing ? handleSubmit() :retry() }
+             className='bg-white text-black   rounded-md  px-4 py-2 mt-5'>{gameOngoing ? "Submit" : "Retry"}</button>
         </div>
     );
 }
